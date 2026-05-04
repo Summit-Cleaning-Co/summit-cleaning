@@ -52,7 +52,6 @@ h2 {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
 }
 
 th, td {
@@ -76,11 +75,27 @@ th {
     margin-top: 10px;
 }
 
-.review {
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+.review-box {
+    background: #0f1b33;
+    padding: 10px;
+    margin-top: 10px;
     border-left: 4px solid #38bdf8;
-    padding-left: 12px;
-    margin: 10px 0;
-    color: #e2e8f0;
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 12px;
 }
 
 footer {
@@ -105,8 +120,8 @@ footer {
     <h2>About Us</h2>
     <div class="card">
         <p>
-            Summit Cleaning Co. provides professional exterior cleaning using pressure washing.
-            We specialize in cars and trash cans — fast, clean, and affordable service.
+            Local pressure washing service in Lehi, Utah. We clean cars and trash cans
+            with professional equipment for a fresh, like-new finish.
         </p>
     </div>
 
@@ -118,38 +133,48 @@ footer {
                 <th>Price</th>
                 <th>Extra</th>
             </tr>
-
             <tr>
                 <td>🚗 Car Wash</td>
-                <td>$20 per car</td>
+                <td>$20</td>
                 <td>$15 per extra car</td>
             </tr>
-
             <tr>
                 <td>🗑️ Trash Can Cleaning</td>
-                <td>$15 per can</td>
+                <td>$15</td>
                 <td>$10 per extra can</td>
             </tr>
         </table>
     </div>
 
+    <h2>Location</h2>
+    <div class="card">
+
+        <!-- Lehi Utah Map -->
+        <iframe 
+            src="https://www.google.com/maps?q=Lehi,Utah&output=embed">
+        </iframe>
+
+    </div>
+
     <h2>Customer Reviews</h2>
     <div class="card">
+
         <p style="color:#94a3b8;">
-            We’re a new local business and currently building our customer base.
+            Leave your review below 👇 (it gets emailed to the business owner)
         </p>
 
-        <div class="review">
-            ⭐⭐⭐⭐⭐ “Great service and super clean results!” – First Customer (coming soon)
-        </div>
+        <!-- REAL working review form -->
+        <form action="https://formsubmit.co/8016835941@sms.com" method="POST">
 
-        <div class="review">
-            ⭐⭐⭐⭐⭐ “Fast, affordable, and reliable.” – Customer review section growing soon
-        </div>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <textarea name="review" placeholder="Write your review..." required></textarea>
 
-        <p style="color:#38bdf8; margin-top:10px;">
-            Be one of our first customers and help build Summit Cleaning Co.!
-        </p>
+            <input type="hidden" name="_subject" value="New Summit Cleaning Review!">
+            <input type="hidden" name="_captcha" value="false">
+
+            <button class="button" type="submit">Submit Review</button>
+        </form>
+
     </div>
 
     <h2>Payment</h2>
@@ -160,18 +185,16 @@ footer {
 
     <h2>Book Now</h2>
     <div class="card">
-        <p>Text us to schedule your cleaning:</p>
-
         <p><b>801-683-5941</b></p>
 
-        <a class="button" href="tel:8016835941">📞 Call to Book</a>
-        <a class="button" href="sms:8016835941">📲 Text to Book</a>
+        <a class="button" href="tel:8016835941">📞 Call</a>
+        <a class="button" href="sms:8016835941">📲 Text</a>
     </div>
 
 </div>
 
 <footer>
-    © 2026 Summit Cleaning Co. All rights reserved.
+    © 2026 Summit Cleaning Co.
 </footer>
 
 </body>
