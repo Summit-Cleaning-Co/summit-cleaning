@@ -4,168 +4,259 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Summit Cleaning Co | Car & Trash Can Cleaning Lehi Utah</title>
-
-<meta name="description" content="Summit Cleaning Co provides car washing and trash can cleaning in Lehi, Utah. Book online instantly.">
+<title>Summit Cleaning Co | Lehi Utah Car & Trash Cleaning</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b1220;
-    color: white;
+body{
+margin:0;
+font-family:Arial;
+background:#0b1220;
+color:white;
 }
 
-header {
-    background: linear-gradient(135deg, #0ea5e9, #0b1220);
-    padding: 80px 20px;
-    text-align: center;
+/* HERO */
+.hero{
+background:linear-gradient(135deg,#0ea5e9,#0b1220);
+padding:90px 20px;
+text-align:center;
 }
 
-.logo {
-    font-size: 50px;
-    font-weight: bold;
+.hero h1{
+font-size:50px;
+margin:0;
 }
 
-.tagline {
-    color: #cbd5e1;
-    margin-top: 10px;
+.hero p{
+color:#cbd5e1;
 }
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
+.btn{
+background:#38bdf8;
+color:black;
+padding:14px 18px;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+display:inline-block;
+margin:10px;
 }
 
-.card {
-    background: #111a2e;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 12px;
-    border: 1px solid #1f2a44;
+/* SECTIONS */
+.container{
+max-width:1000px;
+margin:auto;
+padding:20px;
 }
 
-h2 {
-    color: #38bdf8;
-    margin-top: 40px;
+.card{
+background:#111a2e;
+padding:20px;
+border-radius:14px;
+margin:20px 0;
+border:1px solid #1f2a44;
 }
 
-.button {
-    display: inline-block;
-    padding: 14px 20px;
-    background: #38bdf8;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    margin: 10px 10px 0 0;
+/* PRICE GRID */
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
 }
 
-.services {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+.box{
+background:#0f1b33;
+padding:15px;
+border-radius:10px;
 }
 
-.service-box {
-    background: #0f1b33;
-    padding: 15px;
-    border-radius: 10px;
+/* FLOAT BUTTON */
+#bookFloat{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#22c55e;
+padding:14px 18px;
+border-radius:50px;
+font-weight:bold;
+text-decoration:none;
+color:black;
 }
 
-iframe {
-    width: 100%;
-    height: 300px;
-    border: none;
-    border-radius: 12px;
+/* CHAT */
+#chatBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#38bdf8;
+padding:14px;
+border-radius:50%;
+cursor:pointer;
+font-size:20px;
 }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #060a14;
-    color: #94a3b8;
-    margin-top: 40px;
+#chatBox{
+position:fixed;
+bottom:80px;
+right:20px;
+width:280px;
+background:#111a2e;
+border-radius:12px;
+display:none;
+flex-direction:column;
+border:1px solid #1f2a44;
+}
+
+#msgs{
+height:220px;
+overflow-y:auto;
+padding:10px;
+font-size:13px;
+}
+
+input{
+padding:10px;
+border:none;
+outline:none;
+width:100%;
+}
+
+/* TIKTOK */
+iframe{
+width:100%;
+height:300px;
+border-radius:12px;
+border:none;
+}
+
+/* MAP */
+iframe.map{
+width:100%;
+height:250px;
+border-radius:12px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <div class="logo">SUMMIT CLEANING CO.</div>
-    <div class="tagline">Car Washing • Trash Can Cleaning • Lehi, Utah</div>
+<!-- HERO -->
+<div class="hero">
+<h1>Summit Cleaning Co</h1>
+<p>Car Washing • Trash Can Cleaning • Lehi, Utah</p>
 
-    <a class="button" href="https://cal.com/summit-cleaning/car-wash" target="_blank">🚗 Book Car Wash</a>
-    <a class="button" href="https://cal.com/summit-cleaning/trash-can-cleaning" target="_blank">🗑️ Book Trash Can Cleaning</a>
-</header>
+<a class="btn" href="https://cal.com/summit-cleaning/car-wash">🚗 Book Car Wash</a>
+<a class="btn" href="https://cal.com/summit-cleaning/trash-can-cleaning">🗑️ Book Trash Cleaning</a>
+</div>
 
 <div class="container">
 
+<!-- ABOUT -->
+<div class="card">
 <h2>About Us</h2>
+<p>Local Lehi cleaning service specializing in cars and trash cans. Fast, affordable, and reliable exterior cleaning.</p>
+</div>
+
+<!-- PRICES -->
 <div class="card">
-We are a local cleaning business in Lehi, Utah offering fast, affordable car washing and trash can cleaning. We use professional pressure washing equipment to deliver high-quality results every time.
+<h2>Pricing</h2>
+
+<div class="grid">
+<div class="box">
+🚗 Car Wash<br>
+$20 per car<br>
+$15 extra
 </div>
 
-<h2>Our Services</h2>
-<div class="services">
-
-<div class="service-box">
-<h3>🚗 Car Wash</h3>
-<p>$20 per car</p>
-<p>$15 per extra car</p>
+<div class="box">
+🗑️ Trash Cans<br>
+$15 per can<br>
+$10 extra
+</div>
+</div>
 </div>
 
-<div class="service-box">
-<h3>🗑️ Trash Can Cleaning</h3>
-<p>$15 per can</p>
-<p>$10 per extra can</p>
+<!-- CALCULATOR -->
+<div class="card">
+<h2>Instant Quote</h2>
+
+Cars: <input type="number" id="cars" value="1"><br><br>
+Cans: <input type="number" id="cans" value="1"><br><br>
+
+<button class="btn" onclick="calc()">Calculate</button>
+<p id="total"></p>
 </div>
 
-</div>
-
+<!-- MAP -->
+<div class="card">
 <h2>Service Area</h2>
-<div class="card">
-<iframe src="https://www.google.com/maps?q=Lehi,Utah&output=embed"></iframe>
+<iframe class="map" src="https://www.google.com/maps?q=Lehi,Utah&output=embed"></iframe>
 </div>
 
-<h2>Book a Service</h2>
+<!-- TIKTOK -->
 <div class="card">
-<a class="button" href="https://cal.com/summit-cleaning/car-wash" target="_blank">Book Car Wash</a>
-<a class="button" href="https://cal.com/summit-cleaning/trash-can-cleaning" target="_blank">Book Trash Can Cleaning</a>
+<h2>TikTok</h2>
+<iframe src="https://www.tiktok.com/embed/@summit.cleaning.co"></iframe>
 </div>
 
+<!-- REVIEWS -->
+<div class="card">
 <h2>Customer Reviews</h2>
-<div class="card">
-<p>⭐ Reviews coming soon. Be one of our first customers!</p>
 
-<a class="button" href="https://search.google.com/local/writereview" target="_blank">
-Leave a Review
-</a>
+<p>⭐ “Super fast and super clean!”</p>
+<p>⭐ “My trash cans look brand new.”</p>
+<p>⭐ “Best car wash in Lehi.”</p>
 </div>
 
+<!-- CONTACT -->
+<div class="card">
 <h2>Contact</h2>
-<div class="card">
-📞 801-683-5941<br>
-Cash 💵<br>
-CashApp: ThunderFr
+<p>📞 801-683-5941</p>
+<p>💵 Cash / CashApp (ThunderFr)</p>
 </div>
 
 </div>
 
-<footer>
+<!-- FLOAT BOOK -->
+<a id="bookFloat" href="https://cal.com/summit-cleaning/car-wash">BOOK NOW</a>
 
-<p>© 2026 Summit Cleaning Co.</p>
+<!-- CHAT -->
+<div id="chatBtn" onclick="toggleChat()">🤖</div>
 
-<p style="margin-top:10px;">Follow us for cleaning videos 👇</p>
+<div id="chatBox">
+<div id="msgs"></div>
+<input id="msg" placeholder="Ask..." onkeydown="if(event.key==='Enter')chat()">
+</div>
 
-<a href="https://www.tiktok.com/@summit.cleaning.co" target="_blank"
-style="display:inline-block;margin-top:10px;padding:12px 18px;background:#38bdf8;color:black;text-decoration:none;border-radius:8px;font-weight:bold;">
-🎵 @summit.cleaning.co
-</a>
+<script>
 
-</footer>
+function calc(){
+let c = document.getElementById("cars").value;
+let t = document.getElementById("cans").value;
+let total = (c*20)+(t*15);
+document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function toggleChat(){
+let box = document.getElementById("chatBox");
+box.style.display = box.style.display==="flex"?"none":"flex";
+box.style.flexDirection="column";
+}
+
+function chat(){
+let input = document.getElementById("msg");
+let msg = input.value.toLowerCase();
+let out = "Text 801-683-5941";
+
+if(msg.includes("price")) out="Cars $20, cans $15";
+if(msg.includes("book")) out="Use Book buttons above";
+if(msg.includes("cash")) out="Cash or CashApp ThunderFr";
+
+document.getElementById("msgs").innerHTML += "<p>You: "+msg+"</p>";
+document.getElementById("msgs").innerHTML += "<p>Bot: "+out+"</p>";
+input.value="";
+}
+
+</script>
 
 </body>
 </html>
