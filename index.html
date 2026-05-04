@@ -131,25 +131,26 @@ body {
     border-radius: 16px;
     border: 1px solid #38bdf8;
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    animation: fadeIn 0.3s ease-out forwards;
 }
 .fab-menu .btn {
     margin: 5px 0;
+    width: 200px;
 }
 #bookFloat {
     background: #22c55e;
-    padding: 16px 24px;
+    padding: 16px 28px;
     border-radius: 50px;
     font-weight: bold;
     color: #0b1220;
     box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
     border: none;
     cursor: pointer;
-    font-size: 16px;
-    transition: transform 0.3s ease;
+    font-size: 18px;
+    transition: all 0.3s ease;
 }
 #bookFloat:hover {
     transform: scale(1.05);
+    background: #2bef7c;
 }
 
 /* Inputs */
@@ -160,14 +161,6 @@ input[type="number"] {
     background: #0b1220;
     color: white;
     width: 60px;
-}
-
-/* IFrames */
-iframe {
-    width: 100%;
-    height: 300px;
-    border-radius: 12px;
-    border: none;
 }
 </style>
 </head>
@@ -214,13 +207,6 @@ iframe {
     </div>
 
     <div class="card fade-in">
-        <h2>Customer Reviews</h2>
-        <p>⭐⭐⭐⭐⭐ “Super fast and super clean! Highly recommend if you live in Lehi.”</p>
-        <p>⭐⭐⭐⭐⭐ “My trash cans literally look and smell brand new.”</p>
-        <p>⭐⭐⭐⭐⭐ “Best and easiest car wash in Utah County.”</p>
-    </div>
-
-    <div class="card fade-in">
         <h2>Contact & Payment</h2>
         <p>📞 <strong>Phone:</strong> 801-683-5941 (Text or Call)</p>
         <p>💵 <strong>Accepted Payments:</strong> Cash / CashApp ($ThunderFr)</p>
@@ -230,8 +216,8 @@ iframe {
 
 <div class="fab-container">
     <div id="fabMenu" class="fab-menu">
-        <a class="btn" href="https://cal.com/summit-cleaning/car-wash">🚗 Book Car Wash</a>
-        <a class="btn" href="https://cal.com/summit-cleaning/trash-can-cleaning">🗑️ Book Trash Cans</a>
+        <a class="btn" href="https://cal.com/summit-cleaning/car-wash">🚗 Car Wash</a>
+        <a class="btn" href="https://cal.com/summit-cleaning/trash-can-cleaning">🗑️ Trash Can Cleaning</a>
     </div>
     <button id="bookFloat" onclick="toggleFab()">📅 BOOK NOW</button>
 </div>
@@ -256,6 +242,16 @@ function toggleFab() {
         menu.style.display = "none";
     } else {
         menu.style.display = "flex";
+    }
+}
+
+// Close menu if clicking outside
+window.onclick = function(event) {
+    if (!event.target.matches('#bookFloat')) {
+        let menu = document.getElementById("fabMenu");
+        if (menu.style.display === 'flex') {
+            menu.style.display = 'none';
+        }
     }
 }
 </script>
