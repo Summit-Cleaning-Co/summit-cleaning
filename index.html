@@ -13,7 +13,6 @@ body {
     color: white;
 }
 
-/* HEADER / LOGO */
 header {
     background: linear-gradient(135deg, #0ea5e9, #0b1220);
     padding: 60px 20px;
@@ -31,14 +30,12 @@ header {
     margin-top: 10px;
 }
 
-/* CONTAINER */
 .container {
     max-width: 900px;
     margin: auto;
     padding: 20px;
 }
 
-/* CARDS */
 .card {
     background: #111a2e;
     padding: 20px;
@@ -47,13 +44,11 @@ header {
     border: 1px solid #1f2a44;
 }
 
-/* HEADINGS */
 h2 {
     color: #38bdf8;
     margin-top: 40px;
 }
 
-/* PRICING TABLE */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -70,7 +65,6 @@ th {
     color: #38bdf8;
 }
 
-/* BUTTON */
 .button {
     display: inline-block;
     padding: 14px 20px;
@@ -82,7 +76,13 @@ th {
     margin-top: 10px;
 }
 
-/* FOOTER */
+.review {
+    border-left: 4px solid #38bdf8;
+    padding-left: 12px;
+    margin: 10px 0;
+    color: #e2e8f0;
+}
+
 footer {
     text-align: center;
     padding: 30px;
@@ -97,7 +97,7 @@ footer {
 
 <header>
     <div class="logo">SUMMIT CLEANING CO.</div>
-    <div class="tagline">Car Washing • Trash Can Cleaning • Pressure Washer Detailing</div>
+    <div class="tagline">Car Washing • Trash Can Cleaning</div>
 </header>
 
 <div class="container">
@@ -105,19 +105,18 @@ footer {
     <h2>About Us</h2>
     <div class="card">
         <p>
-            Summit Cleaning Co. provides professional exterior cleaning using a pressure washer.
+            Summit Cleaning Co. provides professional exterior cleaning using pressure washing.
             We specialize in cars and trash cans — fast, clean, and affordable service.
         </p>
     </div>
 
     <h2>Services & Pricing</h2>
-
     <div class="card">
         <table>
             <tr>
                 <th>Service</th>
                 <th>Price</th>
-                <th>Extras</th>
+                <th>Extra</th>
             </tr>
 
             <tr>
@@ -134,22 +133,39 @@ footer {
         </table>
     </div>
 
-    <h2>Payment</h2>
+    <h2>Customer Reviews</h2>
     <div class="card">
-        <p>We accept:</p>
-        <p><b>Cash</b> 💵</p>
-        <p><b>CashApp</b> 💳</p>
+        <p style="color:#94a3b8;">
+            We’re a new local business and currently building our customer base.
+        </p>
+
+        <div class="review">
+            ⭐⭐⭐⭐⭐ “Great service and super clean results!” – First Customer (coming soon)
+        </div>
+
+        <div class="review">
+            ⭐⭐⭐⭐⭐ “Fast, affordable, and reliable.” – Customer review section growing soon
+        </div>
+
+        <p style="color:#38bdf8; margin-top:10px;">
+            Be one of our first customers and help build Summit Cleaning Co.!
+        </p>
     </div>
 
-    <h2>Book a Service</h2>
+    <h2>Payment</h2>
+    <div class="card">
+        <p><b>Cash</b> 💵</p>
+        <p><b>CashApp:</b> ThunderFr</p>
+    </div>
+
+    <h2>Book Now</h2>
     <div class="card">
         <p>Text us to schedule your cleaning:</p>
 
         <p><b>801-683-5941</b></p>
 
-        <a class="button" href="sms:8016835941">
-            📲 Book Now
-        </a>
+        <a class="button" href="tel:8016835941">📞 Call to Book</a>
+        <a class="button" href="sms:8016835941">📲 Text to Book</a>
     </div>
 
 </div>
