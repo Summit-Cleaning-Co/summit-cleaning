@@ -3,249 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Summit Cleaning Co | Lehi Utah Car & Trash Cleaning</title>
+<title>Summit Cleaning Co | Lehi's #1 Car & Trash Can Cleaning</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+
 <style>
-/* --- BASE STYLES --- */
-html {
-    scroll-behavior: smooth;
+:root {
+    --primary: #38bdf8;
+    --primary-dark: #0ea5e9;
+    --accent: #22c55e;
+    --bg: #0b1220;
+    --card-bg: #111a2e;
+    --border: #1f2a44;
+    --text-muted: #cbd5e1;
 }
+
+html { scroll-behavior: smooth; }
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #0b1220;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
     color: white;
+    line-height: 1.6;
 }
 
 /* --- ANIMATIONS --- */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-.fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+.fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+
+/* --- PROMO BANNER --- */
+.promo-banner {
+    background: var(--accent);
+    color: #0b1220;
+    text-align: center;
+    padding: 10px;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* --- HERO SECTION --- */
 .hero {
-    background: linear-gradient(135deg, #0ea5e9, #0b1220);
-    padding: 100px 20px;
+    background: radial-gradient(circle at top right, #1e293b, var(--bg)), 
+                linear-gradient(135deg, var(--primary-dark), var(--bg));
+    padding: 120px 20px;
     text-align: center;
-    border-bottom: 2px solid #1f2a44;
+    border-bottom: 1px solid var(--border);
 }
 .hero h1 {
-    font-size: 56px;
+    font-size: clamp(40px, 8vw, 70px);
     margin: 0;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
 }
+.hero span { color: var(--primary); }
 .hero p {
-    color: #cbd5e1;
-    font-size: 18px;
-    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: 20px;
+    max-width: 600px;
+    margin: 20px auto;
 }
 
 /* --- BUTTONS --- */
 .btn {
-    background: #38bdf8;
+    background: var(--primary);
     color: #0b1220;
-    padding: 14px 24px;
-    border-radius: 12px;
+    padding: 16px 32px;
+    border-radius: 14px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     display: inline-block;
     margin: 10px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
     cursor: pointer;
     font-size: 16px;
-    text-align: center;
+    box-shadow: 0 4px 14px 0 rgba(56, 189, 248, 0.39);
 }
 .btn:hover {
+    transform: translateY(-3px) scale(1.02);
     background: #7dd3fc;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
 }
 
 /* --- CONTAINERS & CARDS --- */
 .container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
-    padding: 40px 20px;
+    padding: 60px 20px;
 }
 .card {
-    background: #111a2e;
-    padding: 25px;
-    border-radius: 16px;
-    margin: 25px 0;
-    border: 1px solid #1f2a44;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
-}
-.card:hover {
-    transform: translateY(-5px);
-    border-color: #38bdf8;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 24px;
+    margin-bottom: 40px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
 }
 .card h2 {
-    color: #38bdf8;
+    font-size: 32px;
     margin-top: 0;
-    border-bottom: 1px solid #1f2a44;
-    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-/* --- SPECIAL NOTICE CARD --- */
-.card.notice {
-    border: 2px solid #fbbf24; /* Amber/Yellow Alert color */
-    background: rgba(251, 191, 36, 0.05);
+/* --- SERVICE STEPS (How it Works) --- */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
 }
-.card.notice h2 {
-    color: #fbbf24;
-    border-bottom-color: rgba(251, 191, 36, 0.2);
+.step {
+    text-align: center;
+    padding: 20px;
+}
+.step-num {
+    background: var(--primary);
+    color: var(--bg);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin: 0 auto 15px;
 }
 
-/* --- GRID LAYOUT --- */
+/* --- PRICING GRID --- */
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 25px;
 }
 .box {
-    background: #0f1b33;
-    padding: 20px;
-    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    padding: 30px;
+    border-radius: 20px;
     text-align: center;
-    border: 1px solid #1f2a44;
+    border: 1px solid var(--border);
+    transition: 0.3s;
 }
-.box span {
-    font-size: 24px;
-    font-weight: bold;
-    color: #22c55e;
+.box:hover { border-color: var(--primary); background: rgba(255,255,255,0.05); }
+.box h3 { margin: 0 0 10px; font-size: 24px; }
+.price-tag { font-size: 40px; font-weight: 800; color: var(--accent); display: block; }
+
+/* --- QUOTE CALCULATOR --- */
+.calc-container {
+    background: var(--bg);
+    padding: 30px;
+    border-radius: 15px;
+}
+.calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+input[type="number"] {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    width: 80px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
 }
 
-/* --- FLOATING BOOKING MENU --- */
+/* --- WATER NOTICE --- */
+.notice-box {
+    background: rgba(251, 191, 36, 0.1);
+    border-left: 5px solid #fbbf24;
+    padding: 20px;
+    border-radius: 0 15px 15px 0;
+}
+
+/* --- FLOATING BOOKING --- */
 .fab-container {
     position: fixed;
-    bottom: 25px;
-    left: 25px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    bottom: 30px;
+    left: 30px;
+    z-index: 9999;
 }
 .fab-menu {
     display: none;
     flex-direction: column;
     margin-bottom: 15px;
-    background: rgba(17, 26, 46, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 15px;
-    border-radius: 16px;
-    border: 1px solid #38bdf8;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-}
-.fab-menu .btn {
-    margin: 5px 0;
-    width: 200px;
+    background: var(--card-bg);
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid var(--primary);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 #bookFloat {
-    background: #22c55e;
-    padding: 16px 28px;
+    background: var(--accent);
+    padding: 18px 30px;
     border-radius: 50px;
-    font-weight: bold;
+    font-weight: 800;
     color: #0b1220;
-    box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
     border: none;
     cursor: pointer;
     font-size: 18px;
-    transition: all 0.3s ease;
-}
-#bookFloat:hover {
-    transform: scale(1.05);
-    background: #2bef7c;
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
 }
 
-/* --- INPUTS & IFRAMES --- */
-input[type="number"] {
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid #38bdf8;
-    background: #0b1220;
-    color: white;
-    width: 60px;
-}
-
-iframe {
-    width: 100%;
-    height: 500px;
-    border-radius: 12px;
-    border: none;
-    background: #0b1220;
+/* --- MOBILE TWEAKS --- */
+@media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 45px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero fade-in">
-    <h1>Summit Cleaning Co</h1>
-    <p>🚗 Car Washing • 🗑️ Trash Can Cleaning • 📍 Lehi, Utah</p>
-    <br>
-    <a class="btn" href="https://cal.com/summit-cleaning/car-wash">🚗 Book Car Wash</a>
-    <a class="btn" href="https://cal.com/summit-cleaning/trash-can-cleaning">🗑️ Book Trash Cleaning</a>
-</div>
+<div class="promo-banner">✨ New Customer Special: $5 Off your first cleaning! ✨</div>
+
+<section class="hero fade-in">
+    <h1>Summit <span>Cleaning</span> Co</h1>
+    <p>Premium Mobile Detailing & Trash Can Sanitization in Lehi, Utah.</p>
+    <a class="btn" href="#quote">Get Instant Quote</a>
+    <div style="margin-top: 20px; font-size: 14px; color: var(--accent); font-weight: 700;">
+        ✓ Fully Insured &nbsp; ✓ 100% Satisfaction Guaranteed
+    </div>
+</section>
 
 <div class="container">
 
     <div class="card fade-in">
-        <h2>About Us</h2>
-        <p>Local Lehi cleaning service specializing in exterior mobile car washing and deep trash can sanitization. Fast, affordable, and reliable so you don't have to lift a finger.</p>
-    </div>
-
-    <div class="card notice fade-in">
-        <h2>⚠️ Service Requirement</h2>
-        <p>For all cleaning services, <strong>access to an outdoor water faucet (spigot) is required</strong> at the service location so we can hook up our equipment. Thank you!</p>
-    </div>
-
-    <div class="card fade-in">
-        <h2>Pricing</h2>
-        <div class="grid">
-            <div class="box">
-                <h3>🚗 Car Wash</h3>
-                <span>$20</span> / car<br>
-                <small>+$15 per extra car</small>
+        <h2>Process 🛠️</h2>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Book Online</h3>
+                <p>Pick a date and time that works for you.</p>
             </div>
-            <div class="box">
-                <h3>🗑️ Trash Cans</h3>
-                <span>$15</span> / can<br>
-                <small>+$10 per extra can</small>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>We Arrive</h3>
+                <p>We show up at your home in Lehi with all our gear.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Sparkling Clean</h3>
+                <p>You enjoy a fresh car or odor-free trash cans!</p>
             </div>
         </div>
     </div>
 
-    <div class="card fade-in">
-        <h2>Instant Quote Calculator</h2>
-        <p>How many cars? <input type="number" id="cars" value="1" min="0"></p>
-        <p>How many cans? <input type="number" id="cans" value="1" min="0"></p>
-        <button class="btn" onclick="calc()">Calculate Total</button>
-        <h3 id="total" style="color: #22c55e;"></h3>
+    <div class="card notice-box fade-in">
+        <h3 style="margin-top:0; color: #fbbf24;">⚠️ Service Requirement</h3>
+        <p>To provide our high-quality clean, we require access to an <strong>outdoor water faucet (spigot)</strong> at your location. We bring the hoses, you provide the flow!</p>
     </div>
 
     <div class="card fade-in">
-        <h2>Contact & Payment</h2>
-        <p>📞 <strong>Phone:</strong> 801-683-5941 (Text or Call)</p>
-        <p>💵 <strong>Accepted Payments:</strong> Cash / CashApp ($ThunderFr)</p>
+        <h2>Simple Pricing 💎</h2>
+        <div class="grid">
+            <div class="box">
+                <h3>🚗 Car Wash</h3>
+                <span class="price-tag">$20</span>
+                <p>+$15 per extra vehicle</p>
+            </div>
+            <div class="box">
+                <h3>🗑️ Trash Cans</h3>
+                <span class="price-tag">$15</span>
+                <p>+$10 per extra can</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="quote" class="card fade-in" style="background: linear-gradient(145deg, #111a2e, #1e293b);">
+        <h2>Instant Quote 🧮</h2>
+        <div class="calc-container">
+            <div class="calc-row">
+                <span>Number of Cars:</span>
+                <input type="number" id="cars" value="1" min="0" oninput="calc()">
+            </div>
+            <div class="calc-row">
+                <span>Number of Trash Cans:</span>
+                <input type="number" id="cans" value="1" min="0" oninput="calc()">
+            </div>
+            <hr style="border: 0; border-top: 1px solid var(--border); margin: 20px 0;">
+            <div class="calc-row">
+                <span style="font-size: 20px; font-weight: 700;">Total Estimate:</span>
+                <span id="total" style="font-size: 32px; font-weight: 800; color: var(--accent);">$35</span>
+            </div>
+            <center><p style="font-size: 12px; color: var(--text-muted);">*Final price confirmed upon arrival</p></center>
+        </div>
     </div>
 
     <div class="card fade-in">
-        <h2>See Our Work</h2>
-        <iframe src="https://www.tiktok.com/embed/@summit.cleaning.co"></iframe>
+        <h2>See Our Work 🎥</h2>
+        <iframe src="https://www.tiktok.com/embed/@summit.cleaning.co" style="height: 600px;"></iframe>
+    </div>
+
+    <div class="card fade-in" style="text-align: center;">
+        <h2>Ready to Shine? 📱</h2>
+        <p style="font-size: 24px; font-weight: 800; margin: 10px 0;">801-683-5941</p>
+        <p>Text for custom quotes or large fleet cleaning!</p>
+        <div style="margin-top: 20px;">
+            <span style="opacity: 0.6;">We accept:</span><br>
+            <strong>Cash • CashApp ($ThunderFr) • Venmo</strong>
+        </div>
     </div>
 
 </div>
 
+<footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border);">
+    &copy; 2024 Summit Cleaning Co. Serving Lehi, Utah and surrounding areas.
+</footer>
+
 <div class="fab-container">
     <div id="fabMenu" class="fab-menu">
-        <a class="btn" href="https://cal.com/summit-cleaning/car-wash">🚗 Car Wash</a>
-        <a class="btn" href="https://cal.com/summit-cleaning/trash-can-cleaning">🗑️ Trash Can Cleaning</a>
+        <a class="btn" href="https://cal.com/summit-cleaning/car-wash">🚗 Book Car Wash</a>
+        <a class="btn" href="https://cal.com/summit-cleaning/trash-can-cleaning">🗑️ Book Trash Cans</a>
     </div>
     <button id="bookFloat" onclick="toggleFab()">📅 BOOK NOW</button>
 </div>
@@ -260,26 +341,19 @@ function calc() {
     let canTotal = cans > 0 ? 15 + ((cans - 1) * 10) : 0;
     let finalTotal = carTotal + canTotal;
     
-    document.getElementById("total").innerText = "Estimated Total: $" + finalTotal;
+    document.getElementById("total").innerText = "$" + finalTotal;
 }
 
-// --- Floating Action Button Menu Toggle ---
+// --- Floating Menu ---
 function toggleFab() {
     let menu = document.getElementById("fabMenu");
-    if (menu.style.display === "flex") {
-        menu.style.display = "none";
-    } else {
-        menu.style.display = "flex";
-    }
+    menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
 }
 
-// Close menu if clicking outside
+// Close menu on outside click
 window.onclick = function(event) {
     if (!event.target.matches('#bookFloat')) {
-        let menu = document.getElementById("fabMenu");
-        if (menu.style.display === 'flex') {
-            menu.style.display = 'none';
-        }
+        document.getElementById("fabMenu").style.display = 'none';
     }
 }
 </script>
