@@ -28,11 +28,15 @@ body {
 }
 
 /* --- ANIMATIONS --- */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
 }
-.fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
@@ -46,9 +50,8 @@ body {
 }
 
 @keyframes blink {
-    0% { opacity: 1; }
+    0%, 100% { opacity: 1; }
     50% { opacity: 0.4; }
-    100% { opacity: 1; }
 }
 
 /* --- NAV BAR --- */
@@ -57,6 +60,7 @@ nav {
     top: 0; width: 100%;
     background: rgba(11, 18, 32, 0.8);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 100;
     border-bottom: 1px solid var(--border);
     display: flex;
@@ -84,7 +88,7 @@ nav a:hover { color: var(--primary); }
     margin: 0;
     font-weight: 800;
     letter-spacing: -2px;
-    background: -webkit-linear-gradient(45deg, #fff, var(--primary));
+    background: linear-gradient(45deg, #fff, var(--primary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -110,8 +114,7 @@ nav a:hover { color: var(--primary); }
     margin-bottom: 20px;
 }
 .status-dot {
-    height: 8px;
-    width: 8px;
+    height: 8px; width: 8px;
     background: var(--accent);
     border-radius: 50%;
     margin-right: 8px;
@@ -122,24 +125,23 @@ nav a:hover { color: var(--primary); }
 .marquee-container {
     background: var(--primary-dark);
     color: white;
-    padding: 10px 0;
+    padding: 12px 0;
     overflow: hidden;
     white-space: nowrap;
     font-weight: 600;
     font-size: 14px;
-    letter-spacing: 1px;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
 .marquee-content {
     display: inline-block;
-    animation: marquee 20s linear infinite;
+    animation: marquee 25s linear infinite;
 }
-.marquee-content span { margin: 0 30px; }
+.marquee-content span { margin: 0 40px; }
 
-/* --- LAYOUT & CARDS --- */
+/* --- CONTAINERS --- */
 .container {
-    max-width: 1000px;
+    max-width: 900px;
     margin: auto;
     padding: 60px 20px;
 }
@@ -148,10 +150,9 @@ nav a:hover { color: var(--primary); }
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 40px;
-    border-radius: 24px;
+    border-radius: 28px;
     margin-bottom: 40px;
     border: 1px solid var(--border);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .notice-box {
@@ -171,123 +172,73 @@ nav a:hover { color: var(--primary); }
     text-decoration: none;
     font-weight: 700;
     display: inline-block;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.3s;
     border: none;
     cursor: pointer;
     font-size: 16px;
     text-align: center;
 }
-.btn:hover {
-    transform: translateY(-3px);
-    background: #7dd3fc;
-}
+.btn:hover { transform: translateY(-3px); background: #7dd3fc; }
 
 .tiktok-btn {
     background: #fe2c55;
     color: white;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
-/* --- PRICING GRID --- */
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-}
+/* --- GRID --- */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .box {
     background: rgba(255,255,255,0.02);
     padding: 30px;
     border-radius: 20px;
     text-align: center;
     border: 1px solid rgba(255,255,255,0.05);
-    transition: 0.3s;
 }
-.box:hover { 
-    border-color: var(--primary); 
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
-}
-.price-tag { font-size: 40px; font-weight: 800; color: var(--accent); }
+.price-tag { font-size: 42px; font-weight: 800; color: var(--accent); display: block; }
 
-/* --- FAQ ACCORDION --- */
-.faq-item {
-    border-bottom: 1px solid var(--border);
-    padding: 15px 0;
-}
+/* --- FAQ --- */
+.faq-item { border-bottom: 1px solid var(--border); padding: 15px 0; }
 .faq-question {
     font-weight: 600;
-    font-size: 18px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     color: var(--primary);
 }
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: 0.3s ease-out;
     color: var(--text-muted);
-    margin-top: 5px;
+    font-size: 15px;
 }
 
-/* --- FAB BUTTON --- */
-.fab-container {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    z-index: 9999;
-}
+/* --- FAB --- */
+.fab-container { position: fixed; bottom: 30px; left: 30px; z-index: 1000; }
 .fab-menu {
-    display: none;
-    flex-direction: column;
-    margin-bottom: 15px;
-    background: rgba(11, 18, 32, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 15px;
-    border-radius: 20px;
-    border: 2px solid var(--primary);
+    display: none; flex-direction: column;
+    margin-bottom: 15px; background: #111a2e;
+    padding: 15px; border-radius: 20px; border: 2px solid var(--primary);
 }
 .fab-menu a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: 600;
-    text-align: center;
-    border-radius: 10px;
-    background: #1f2a44;
-    margin-bottom: 8px;
+    color: white; text-decoration: none; padding: 12px;
+    background: #1f2a44; margin-bottom: 8px; border-radius: 10px; text-align: center;
 }
-
 #bookFloat {
-    background: var(--accent);
-    padding: 18px 30px;
-    border-radius: 50px;
-    font-weight: 800;
-    color: #0b1220;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    animation: pulse 2s infinite;
+    background: var(--accent); padding: 18px 30px;
+    border-radius: 50px; font-weight: 800; color: #0b1220;
+    border: none; cursor: pointer; animation: pulse 2s infinite;
 }
 
 input[type="number"] {
-    background: rgba(0,0,0,0.3);
-    border: 1px solid var(--primary);
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    width: 60px;
-    text-align: center;
+    background: rgba(0,0,0,0.3); border: 1px solid var(--primary);
+    color: white; padding: 10px; border-radius: 8px; width: 60px; text-align: center;
 }
-iframe { width: 100%; border-radius: 12px; border: none; }
 
-@media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 45px; }
-}
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 
@@ -296,112 +247,112 @@ iframe { width: 100%; border-radius: 12px; border: none; }
 <nav>
     <a href="#services">Services</a>
     <a href="#quote">Quote</a>
-    <a href="#work">Our Work</a>
+    <a href="#work">Work</a>
     <a href="#faq">FAQ</a>
 </nav>
 
-<section class="hero fade-in">
+<section class="hero reveal">
     <div class="status-tag">
         <div class="status-dot"></div> Accepting New Clients in Lehi
     </div>
     <h1>Summit Cleaning Co</h1>
-    <p>Premium Mobile Detailing & Trash Can Sanitization in Lehi, Utah.</p>
+    <p>Lehi's Premium Mobile Detailing & Trash Can Sanitization.</p>
 </section>
 
-<div class="marquee-container fade-in">
+<div class="marquee-container reveal">
     <div class="marquee-content">
-        <span>✨ $5 Off First Cleaning</span>
-        <span>💧 We Come To You</span>
-        <span>♻️ Eco-Friendly Products</span>
-        <span>📍 Serving Lehi & Surrounding Areas</span>
-        <span>✨ Quality Over Quantity</span>
-        <span>✨ $5 Off First Cleaning</span>
-        <span>💧 We Come To You</span>
-        <span>♻️ Eco-Friendly Products</span>
-        <span>📍 Serving Lehi & Surrounding Areas</span>
-        <span>✨ Quality Over Quantity</span>
+        <span>✨ $5 OFF FIRST CLEANING</span>
+        <span>💧 WE COME TO YOU</span>
+        <span>♻️ ECO-FRIENDLY PRODUCTS</span>
+        <span>📍 SERVING LEHI & SURROUNDING AREAS</span>
+        <span>✨ QUALITY OVER QUANTITY</span>
+        <span>✨ $5 OFF FIRST CLEANING</span>
+        <span>💧 WE COME TO YOU</span>
+        <span>♻️ ECO-FRIENDLY PRODUCTS</span>
+        <span>📍 SERVING LEHI & SURROUNDING AREAS</span>
     </div>
 </div>
 
 <div class="container">
 
-    <div class="notice-box fade-in">
-        <h3 style="margin-top:0; color: #fbbf24;">⚠️ Service Requirement</h3>
-        <p>To provide you with the best clean, we require access to an <strong>outdoor water faucet (spigot)</strong> at your location.</p>
+    <div class="notice-box reveal">
+        <h3 style="margin-top:0; color: #fbbf24;">⚠️ Requirement</h3>
+        <p>We require access to an <strong>outdoor water faucet (spigot)</strong> at your location to power our equipment.</p>
     </div>
 
-    <div id="services" class="card fade-in">
+    <div id="services" class="card reveal">
         <h2>Our Services 💎</h2>
         <div class="grid">
             <div class="box">
                 <h3>🚗 Car Wash</h3>
                 <span class="price-tag">$20</span>
-                <p style="color:var(--text-muted)">+$15 per extra vehicle</p>
+                <p>+$15 per extra vehicle</p>
             </div>
             <div class="box">
                 <h3>🗑️ Trash Cans</h3>
                 <span class="price-tag">$15</span>
-                <p style="color:var(--text-muted)">+$10 per extra can</p>
+                <p>+$10 per extra can</p>
             </div>
         </div>
     </div>
 
-    <div id="quote" class="card fade-in" style="border-color: var(--primary);">
+    <div id="quote" class="card reveal" style="border-color: var(--primary);">
         <h2>Instant Estimate 🧮</h2>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <span>Number of Cars:</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+            <span>Cars:</span>
             <input type="number" id="cars" value="1" min="0" oninput="calc()">
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span>Number of Trash Cans:</span>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span>Trash Cans:</span>
             <input type="number" id="cans" value="1" min="0" oninput="calc()">
         </div>
-        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 25px 0;">
-        <div style="text-align: right;">
-            <span style="font-size: 18px; color: var(--text-muted);">Total Estimated Cost:</span><br>
-            <span id="total" style="color: var(--accent); font-size: 48px; font-weight: 800;">$35</span>
+        <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin:25px 0;">
+        <div style="text-align:right;">
+            <span style="color:var(--text-muted)">Total Estimate:</span><br>
+            <span id="total" style="color:var(--accent); font-size:48px; font-weight:800;">$35</span>
         </div>
     </div>
 
-    <div id="work" class="card fade-in">
+    <div id="work" class="card reveal">
         <h2>See Our Work 🎥</h2>
-        <iframe src="https://www.tiktok.com/embed/@summit.cleaning.co" style="height: 550px;"></iframe>
+        <iframe src="https://www.tiktok.com/embed/@summit.cleaning.co" style="height:550px; width:100%; border-radius:12px;"></iframe>
         <a href="https://www.tiktok.com/@summit.cleaning.co" target="_blank" class="btn tiktok-btn">▶ View Profile on TikTok</a>
     </div>
 
-    <div id="faq" class="card fade-in">
-        <h2>Frequent Questions 🤔</h2>
+    <div id="faq" class="card reveal">
+        <h2>FAQ 🤔</h2>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">Do I need to be home? <span>+</span></div>
             <div class="faq-answer">
-                <p>If you are paying via <strong>CashApp</strong>, you don't need to be home! If you are paying with <strong>Cash</strong>, you'll need to be there to hand it over, or you can leave it in a safe spot (like under the doormat) and let us know!</p>
+                <p>If paying via <strong>CashApp</strong>, no! If paying <strong>Cash</strong>, you'll need to be present or leave it in a safe spot (like under the doormat) and let us know.</p>
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">What payments do you take? <span>+</span></div>
-            <div class="faq-answer"><p>We accept <strong>Cash</strong> and <strong>CashApp ($ThunderFr)</strong>. We do not take Venmo at this time.</p></div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Do you clean the inside of cars? <span>+</span></div>
-            <div class="faq-answer"><p>Currently, we specialize in exterior mobile washing to keep our process fast and affordable!</p></div>
+            <div class="faq-answer"><p>We accept <strong>Cash</strong> and <strong>CashApp ($ThunderFr)</strong>. We do not take Venmo.</p></div>
         </div>
     </div>
 
-    <div class="card fade-in">
+    <div class="card reveal">
         <h2>Service Area 📍</h2>
-        <p style="color: var(--text-muted);">Proudly serving Lehi, Utah and surrounding neighborhoods.</p>
-        <iframe 
-            src="https://maps.google.com/maps/contrib/101590685936201412996" 
-            height="350" 
-            allowfullscreen="" 
-            loading="lazy"
-            style="filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);"> 
-        </iframe>
+        <p style="color:var(--text-muted); margin-bottom: 20px;">Serving Lehi and surrounding Utah County neighborhoods.</p>
+        <div style="width: 100%; height: 350px; border-radius: 12px; overflow: hidden;">
+            <iframe 
+                width="100%" 
+                height="100%" 
+                frameborder="0" 
+                scrolling="no" 
+                marginheight="0" 
+                marginwidth="0" 
+                src="https://maps.google.com/maps?q=Lehi,UT&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                style="filter: invert(90%) hue-rotate(180deg) contrast(90%);">
+            </iframe>
+        </div>
     </div>
 
 </div>
 
-<footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1);">
+<footer style="text-align:center; padding:60px 20px; color:var(--text-muted); font-size:14px; border-top:1px solid rgba(255,255,255,0.05);">
     © 2026 Summit Cleaning Co.<br>801-683-5941 | Lehi, Utah
 </footer>
 
@@ -417,35 +368,37 @@ iframe { width: 100%; border-radius: 12px; border: none; }
 function calc() {
     let cars = parseInt(document.getElementById("cars").value) || 0;
     let cans = parseInt(document.getElementById("cans").value) || 0;
-    let carTotal = cars > 0 ? 20 + ((cars - 1) * 15) : 0;
-    let canTotal = cans > 0 ? 15 + ((cans - 1) * 10) : 0;
-    document.getElementById("total").innerText = "$" + (carTotal + canTotal);
+    let carT = cars > 0 ? 20 + ((cars - 1) * 15) : 0;
+    let canT = cans > 0 ? 15 + ((cans - 1) * 10) : 0;
+    document.getElementById("total").innerText = "$" + (carT + canT);
 }
 
 function toggleFab() {
-    let menu = document.getElementById("fabMenu");
-    menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+    let m = document.getElementById("fabMenu");
+    m.style.display = (m.style.display === "flex") ? "none" : "flex";
 }
 
-window.onclick = function(event) {
-    if (!event.target.matches('#bookFloat')) {
-        document.getElementById("fabMenu").style.display = 'none';
-    }
+function toggleFaq(e) {
+    let a = e.nextElementSibling;
+    let s = e.querySelector('span');
+    if (a.style.maxHeight) { a.style.maxHeight = null; s.innerText = '+'; }
+    else { a.style.maxHeight = a.scrollHeight + "px"; s.innerText = '−'; }
 }
 
-function toggleFaq(element) {
-    let answer = element.nextElementSibling;
-    let symbol = element.querySelector('span');
-    if (answer.style.maxHeight) {
-        answer.style.maxHeight = null;
-        symbol.innerText = '+';
-    } else {
-        document.querySelectorAll('.faq-answer').forEach(el => el.style.maxHeight = null);
-        document.querySelectorAll('.faq-question span').forEach(el => el.innerText = '+');
-        answer.style.maxHeight = answer.scrollHeight + "px";
-        symbol.innerText = '−';
+// Reveal Logic
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
     }
 }
+window.addEventListener("scroll", reveal);
+reveal(); // Run once on load
 </script>
 
 </body>
