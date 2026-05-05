@@ -12,7 +12,7 @@
     --primary-dark: #0ea5e9;
     --accent: #22c55e;
     --bg: #0b1220;
-    --card-bg: rgba(17, 26, 46, 0.7); /* Glassmorphism base */
+    --card-bg: rgba(17, 26, 46, 0.7);
     --border: rgba(56, 189, 248, 0.2);
     --text-muted: #cbd5e1;
 }
@@ -131,6 +131,38 @@ nav a:hover { color: var(--primary); }
     padding: 20px;
     border-radius: 0 15px 15px 0;
     margin-bottom: 40px;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    background: var(--primary);
+    color: #0b1220;
+    padding: 16px 32px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+.btn:hover {
+    transform: translateY(-3px);
+    background: #7dd3fc;
+}
+
+.tiktok-btn {
+    background: #fe2c55; /* TikTok Brand Color */
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+.tiktok-btn:hover {
+    background: #ff476d;
 }
 
 /* --- PRICING GRID --- */
@@ -305,6 +337,7 @@ iframe { width: 100%; border-radius: 12px; border: none; }
     <div id="work" class="card fade-in">
         <h2>See Our Work 🎥</h2>
         <iframe src="https://www.tiktok.com/embed/@summit.cleaning.co" style="height: 550px;"></iframe>
+        <a href="https://www.tiktok.com/@summit.cleaning.co" target="_blank" class="btn tiktok-btn">▶ View Profile on TikTok</a>
     </div>
 
     <div id="faq" class="card fade-in">
@@ -331,7 +364,8 @@ iframe { width: 100%; border-radius: 12px; border: none; }
             height="350" 
             allowfullscreen="" 
             loading="lazy"
-            style="filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);"> </iframe>
+            style="filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);"> 
+        </iframe>
     </div>
 
 </div>
@@ -380,7 +414,6 @@ function toggleFaq(element) {
         answer.style.maxHeight = null;
         symbol.innerText = '+';
     } else {
-        // Close all others first
         document.querySelectorAll('.faq-answer').forEach(el => el.style.maxHeight = null);
         document.querySelectorAll('.faq-question span').forEach(el => el.innerText = '+');
         
