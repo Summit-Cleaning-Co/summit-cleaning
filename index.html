@@ -45,6 +45,12 @@ body {
     100% { transform: translateX(-50%); }
 }
 
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
 /* --- NAV BAR --- */
 nav {
     position: fixed;
@@ -69,7 +75,7 @@ nav a:hover { color: var(--primary); }
 
 /* --- HERO --- */
 .hero {
-    padding: 150px 20px 80px;
+    padding: 150px 20px 60px;
     text-align: center;
     background: radial-gradient(circle at center, #1e293b 0%, var(--bg) 100%);
 }
@@ -87,6 +93,29 @@ nav a:hover { color: var(--primary); }
     font-size: 20px;
     max-width: 600px;
     margin: 20px auto;
+}
+
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--accent);
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    margin-bottom: 20px;
+}
+.status-dot {
+    height: 8px;
+    width: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: blink 1.5s infinite;
 }
 
 /* --- MARQUEE --- */
@@ -107,19 +136,6 @@ nav a:hover { color: var(--primary); }
     animation: marquee 20s linear infinite;
 }
 .marquee-content span { margin: 0 30px; }
-
-/* --- STATS SECTION --- */
-.stats-bar {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 20px;
-    margin-bottom: 40px;
-    border: 1px solid var(--border);
-}
-.stat-item h4 { margin: 0; font-size: 28px; color: var(--primary); }
-.stat-item p { margin: 0; font-size: 12px; text-transform: uppercase; color: var(--text-muted); }
 
 /* --- LAYOUT & CARDS --- */
 .container {
@@ -191,7 +207,7 @@ nav a:hover { color: var(--primary); }
 .box:hover { 
     border-color: var(--primary); 
     transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
 }
 .price-tag { font-size: 40px; font-weight: 800; color: var(--accent); }
 
@@ -285,6 +301,9 @@ iframe { width: 100%; border-radius: 12px; border: none; }
 </nav>
 
 <section class="hero fade-in">
+    <div class="status-tag">
+        <div class="status-dot"></div> Accepting New Clients in Lehi
+    </div>
     <h1>Summit Cleaning Co</h1>
     <p>Premium Mobile Detailing & Trash Can Sanitization in Lehi, Utah.</p>
 </section>
@@ -295,22 +314,16 @@ iframe { width: 100%; border-radius: 12px; border: none; }
         <span>💧 We Come To You</span>
         <span>♻️ Eco-Friendly Products</span>
         <span>📍 Serving Lehi & Surrounding Areas</span>
-        <span>✨ 100% Satisfaction Guaranteed</span>
+        <span>✨ Quality Over Quantity</span>
         <span>✨ $5 Off First Cleaning</span>
         <span>💧 We Come To You</span>
         <span>♻️ Eco-Friendly Products</span>
         <span>📍 Serving Lehi & Surrounding Areas</span>
-        <span>✨ 100% Satisfaction Guaranteed</span>
+        <span>✨ Quality Over Quantity</span>
     </div>
 </div>
 
 <div class="container">
-
-    <div class="stats-bar fade-in">
-        <div class="stat-item"><h4>100+</h4><p>Cars Detailed</p></div>
-        <div class="stat-item"><h4>50+</h4><p>Cans Sanitized</p></div>
-        <div class="stat-item"><h4>5.0</h4><p>Star Quality</p></div>
-    </div>
 
     <div class="notice-box fade-in">
         <h3 style="margin-top:0; color: #fbbf24;">⚠️ Service Requirement</h3>
@@ -378,7 +391,7 @@ iframe { width: 100%; border-radius: 12px; border: none; }
         <h2>Service Area 📍</h2>
         <p style="color: var(--text-muted);">Proudly serving Lehi, Utah and surrounding neighborhoods.</p>
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48600.32076295713!2d-111.89069145!3d40.3916172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874d816ad8d81269%3A0xbd7f2b81600d61c9!2sLehi%2C%20UT!5e0!3m2!1sen!2sus!4v1715000000000!5m2!1sen!2sus" 
+            src="https://maps.google.com/maps/contrib/101590685936201412996" 
             height="350" 
             allowfullscreen="" 
             loading="lazy"
@@ -401,7 +414,6 @@ iframe { width: 100%; border-radius: 12px; border: none; }
 </div>
 
 <script>
-// Quote Calculator
 function calc() {
     let cars = parseInt(document.getElementById("cars").value) || 0;
     let cans = parseInt(document.getElementById("cans").value) || 0;
@@ -410,31 +422,26 @@ function calc() {
     document.getElementById("total").innerText = "$" + (carTotal + canTotal);
 }
 
-// Floating Menu
 function toggleFab() {
     let menu = document.getElementById("fabMenu");
     menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
 }
 
-// Close menu if clicked outside
 window.onclick = function(event) {
     if (!event.target.matches('#bookFloat')) {
         document.getElementById("fabMenu").style.display = 'none';
     }
 }
 
-// FAQ Accordion Logic
 function toggleFaq(element) {
     let answer = element.nextElementSibling;
     let symbol = element.querySelector('span');
-    
     if (answer.style.maxHeight) {
         answer.style.maxHeight = null;
         symbol.innerText = '+';
     } else {
         document.querySelectorAll('.faq-answer').forEach(el => el.style.maxHeight = null);
         document.querySelectorAll('.faq-question span').forEach(el => el.innerText = '+');
-        
         answer.style.maxHeight = answer.scrollHeight + "px";
         symbol.innerText = '−';
     }
