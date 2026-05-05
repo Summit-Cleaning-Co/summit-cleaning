@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Summit Cleaning Co | Lehi's #1 Car & Trash Can Cleaning</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -12,8 +12,8 @@
     --primary-dark: #0ea5e9;
     --accent: #22c55e;
     --bg: #0b1220;
-    --card-bg: #111a2e;
-    --border: #1f2a44;
+    --card-bg: rgba(17, 26, 46, 0.7); /* Glassmorphism base */
+    --border: rgba(56, 189, 248, 0.2);
     --text-muted: #cbd5e1;
 }
 
@@ -24,40 +24,64 @@ body {
     background: var(--bg);
     color: white;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* --- ANIMATIONS --- */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
 
-.promo-banner {
-    background: var(--accent);
-    color: #0b1220;
-    text-align: center;
-    padding: 10px;
-    font-weight: 800;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
 
-.hero {
-    background: radial-gradient(circle at top right, #1e293b, var(--bg)), 
-                linear-gradient(135deg, var(--primary-dark), var(--bg));
-    padding: 120px 20px;
-    text-align: center;
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- NAV BAR --- */
+nav {
+    position: fixed;
+    top: 0; width: 100%;
+    background: rgba(11, 18, 32, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
     border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    gap: 20px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+nav a:hover { color: var(--primary); }
+
+/* --- HERO --- */
+.hero {
+    padding: 150px 20px 80px;
+    text-align: center;
+    background: radial-gradient(circle at center, #1e293b 0%, var(--bg) 100%);
 }
 .hero h1 {
-    font-size: clamp(40px, 8vw, 70px);
+    font-size: clamp(40px, 8vw, 75px);
     margin: 0;
     font-weight: 800;
     letter-spacing: -2px;
+    background: -webkit-linear-gradient(45deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-.hero span { color: var(--primary); }
 .hero p {
     color: var(--text-muted);
     font-size: 20px;
@@ -65,25 +89,26 @@ body {
     margin: 20px auto;
 }
 
-.btn {
-    background: var(--primary);
-    color: #0b1220;
-    padding: 16px 32px;
-    border-radius: 14px;
-    text-decoration: none;
-    font-weight: 700;
+/* --- MARQUEE --- */
+.marquee-container {
+    background: var(--primary-dark);
+    color: white;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+.marquee-content {
     display: inline-block;
-    margin: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
+    animation: marquee 20s linear infinite;
 }
-.btn:hover {
-    transform: translateY(-3px);
-    background: #7dd3fc;
-}
+.marquee-content span { margin: 0 30px; }
 
+/* --- LAYOUT & CARDS --- */
 .container {
     max-width: 1000px;
     margin: auto;
@@ -91,26 +116,14 @@ body {
 }
 .card {
     background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 40px;
     border-radius: 24px;
     margin-bottom: 40px;
     border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
-
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-}
-.box {
-    background: rgba(255,255,255,0.03);
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    border: 1px solid var(--border);
-}
-
-.price-tag { font-size: 40px; font-weight: 800; color: var(--accent); }
 
 .notice-box {
     background: rgba(251, 191, 36, 0.1);
@@ -120,6 +133,46 @@ body {
     margin-bottom: 40px;
 }
 
+/* --- PRICING GRID --- */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+.box {
+    background: rgba(255,255,255,0.02);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+.box:hover { border-color: var(--primary); transform: translateY(-5px); }
+.price-tag { font-size: 40px; font-weight: 800; color: var(--accent); }
+
+/* --- FAQ ACCORDION --- */
+.faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 15px 0;
+}
+.faq-question {
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary);
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+/* --- FAB BUTTON --- */
 .fab-container {
     position: fixed;
     bottom: 30px;
@@ -130,11 +183,24 @@ body {
     display: none;
     flex-direction: column;
     margin-bottom: 15px;
-    background: var(--card-bg);
-    padding: 10px;
+    background: rgba(11, 18, 32, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px;
     border-radius: 20px;
     border: 2px solid var(--primary);
 }
+.fab-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 10px;
+    background: #1f2a44;
+    margin-bottom: 8px;
+}
+.fab-menu a:hover { background: var(--primary); color: #0b1220; }
+
 #bookFloat {
     background: var(--accent);
     padding: 18px 30px;
@@ -143,102 +209,147 @@ body {
     color: #0b1220;
     border: none;
     cursor: pointer;
+    font-size: 16px;
+    animation: pulse 2s infinite;
 }
 
-iframe.map-frame {
-    width: 100%;
-    height: 400px;
-    border-radius: 12px;
-    border: 0;
+/* INPUTS & IFRAMES */
+input[type="number"] {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--primary);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: 60px;
+    font-size: 16px;
+    text-align: center;
 }
+iframe { width: 100%; border-radius: 12px; border: none; }
 
 @media (max-width: 600px) {
     .grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 45px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="promo-banner">✨ New Customer Special: $5 Off your first cleaning! ✨</div>
+<nav>
+    <a href="#services">Services</a>
+    <a href="#quote">Quote</a>
+    <a href="#work">Our Work</a>
+    <a href="#faq">FAQ</a>
+</nav>
 
 <section class="hero fade-in">
-    <h1>Summit <span>Cleaning</span> Co</h1>
+    <h1>Summit Cleaning Co</h1>
     <p>Premium Mobile Detailing & Trash Can Sanitization in Lehi, Utah.</p>
-    <a class="btn" href="#quote">Get Instant Quote</a>
-    <div style="margin-top: 20px; font-size: 14px; color: var(--accent); font-weight: 700;">
-        ✓ Local Lehi Business &nbsp; ✓ 100% Satisfaction Guaranteed
-    </div>
 </section>
+
+<div class="marquee-container fade-in">
+    <div class="marquee-content">
+        <span>✨ $5 Off First Cleaning</span>
+        <span>💧 We Come To You</span>
+        <span>♻️ Eco-Friendly Products</span>
+        <span>📍 Serving Lehi & Surrounding Areas</span>
+        <span>✨ 100% Satisfaction Guaranteed</span>
+        <span>✨ $5 Off First Cleaning</span>
+        <span>💧 We Come To You</span>
+        <span>♻️ Eco-Friendly Products</span>
+        <span>📍 Serving Lehi & Surrounding Areas</span>
+        <span>✨ 100% Satisfaction Guaranteed</span>
+    </div>
+</div>
 
 <div class="container">
 
     <div class="notice-box fade-in">
         <h3 style="margin-top:0; color: #fbbf24;">⚠️ Service Requirement</h3>
-        <p>We require access to an <strong>outdoor water faucet (spigot)</strong> at your location to power our equipment.</p>
+        <p>To provide you with the best clean, we require access to an <strong>outdoor water faucet (spigot)</strong> at your location.</p>
     </div>
 
-    <div class="card fade-in">
-        <h2>Pricing 💎</h2>
+    <div id="services" class="card fade-in">
+        <h2>Our Services 💎</h2>
         <div class="grid">
             <div class="box">
                 <h3>🚗 Car Wash</h3>
                 <span class="price-tag">$20</span>
-                <p>+$15 per extra vehicle</p>
+                <p style="color:var(--text-muted)">+$15 per extra vehicle</p>
             </div>
             <div class="box">
                 <h3>🗑️ Trash Cans</h3>
                 <span class="price-tag">$15</span>
-                <p>+$10 per extra can</p>
+                <p style="color:var(--text-muted)">+$10 per extra can</p>
             </div>
         </div>
     </div>
 
-    <div id="quote" class="card fade-in">
-        <h2>Instant Quote 🧮</h2>
-        <p>Cars: <input type="number" id="cars" value="1" min="0" oninput="calc()" style="background:var(--bg); border:1px solid var(--border); color:white; padding:10px; border-radius:8px; width:60px;"></p>
-        <p>Cans: <input type="number" id="cans" value="1" min="0" oninput="calc()" style="background:var(--bg); border:1px solid var(--border); color:white; padding:10px; border-radius:8px; width:60px;"></p>
-        <h3 id="total" style="color: var(--accent); font-size: 42px; margin: 10px 0;">$35</h3>
+    <div id="quote" class="card fade-in" style="border-color: var(--primary);">
+        <h2>Instant Estimate 🧮</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <span>Number of Cars:</span>
+            <input type="number" id="cars" value="1" min="0" oninput="calc()">
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span>Number of Trash Cans:</span>
+            <input type="number" id="cans" value="1" min="0" oninput="calc()">
+        </div>
+        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 25px 0;">
+        <div style="text-align: right;">
+            <span style="font-size: 18px; color: var(--text-muted);">Total Estimated Cost:</span><br>
+            <span id="total" style="color: var(--accent); font-size: 48px; font-weight: 800;">$35</span>
+        </div>
     </div>
 
-    <div class="card fade-in">
+    <div id="work" class="card fade-in">
         <h2>See Our Work 🎥</h2>
-        <iframe src="https://www.tiktok.com/embed/@summit.cleaning.co" style="width:100%; height: 500px; border-radius:12px; border:none;"></iframe>
+        <iframe src="https://www.tiktok.com/embed/@summit.cleaning.co" style="height: 550px;"></iframe>
+    </div>
+
+    <div id="faq" class="card fade-in">
+        <h2>Frequent Questions 🤔</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Do I need to be home? <span>+</span></div>
+            <div class="faq-answer"><p>Nope! As long as we have access to your outdoor water faucet and the vehicles/cans are accessible, we can handle the rest.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">What payments do you take? <span>+</span></div>
+            <div class="faq-answer"><p>We try to keep it easy. We accept Cash, CashApp ($ThunderFr), and Venmo.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Do you clean the inside of cars? <span>+</span></div>
+            <div class="faq-answer"><p>Currently, we specialize in exterior mobile washing to keep our process fast and affordable!</p></div>
+        </div>
     </div>
 
     <div class="card fade-in">
         <h2>Service Area 📍</h2>
-        <p>Proudly serving Lehi and surrounding areas.</p>
+        <p style="color: var(--text-muted);">Proudly serving Lehi, Utah and surrounding neighborhoods.</p>
         <iframe 
-            class="map-frame"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48503.74322409743!2d-111.890333!3d40.391617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874d6f76d8da1b69%3A0xfd6fac81600d61c9!2sLehi%2C%20UT!5e0!3m2!1sen!2sus!4v1715000000000!5m2!1sen!2sus" 
+            src="https://maps.google.com/maps?q=Lehi,+Utah&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+            height="350" 
             allowfullscreen="" 
-            loading="lazy">
-        </iframe>
-    </div>
-
-    <div class="card fade-in" style="text-align: center;">
-        <h2>Ready to Shine? 📱</h2>
-        <p style="font-size: 32px; font-weight: 800; color: var(--primary);">801-683-5941</p>
-        <p>Text us to get on the schedule today!</p>
-        <p style="opacity:0.7">Cash • CashApp • Venmo</p>
+            loading="lazy"
+            style="filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);"> </iframe>
     </div>
 
 </div>
 
-<footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border);">
-    &copy; 2026 Summit Cleaning Co. Lehi, Utah.
+<footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1);">
+    © 2026 Summit Cleaning Co.<br>801-683-5941 | Lehi, Utah
 </footer>
 
 <div class="fab-container">
     <div id="fabMenu" class="fab-menu">
-        <a class="btn" href="https://cal.com/summit-cleaning/car-wash">🚗 Book Car Wash</a>
-        <a class="btn" href="https://cal.com/summit-cleaning/trash-can-cleaning">🗑️ Book Trash Cans</a>
+        <a href="https://cal.com/summit-cleaning/car-wash">🚗 Book Car Wash</a>
+        <a href="https://cal.com/summit-cleaning/trash-can-cleaning">🗑️ Book Trash Cans</a>
     </div>
     <button id="bookFloat" onclick="toggleFab()">📅 BOOK NOW</button>
 </div>
 
 <script>
+// Quote Calculator
 function calc() {
     let cars = parseInt(document.getElementById("cars").value) || 0;
     let cans = parseInt(document.getElementById("cans").value) || 0;
@@ -247,9 +358,35 @@ function calc() {
     document.getElementById("total").innerText = "$" + (carTotal + canTotal);
 }
 
+// Floating Menu
 function toggleFab() {
     let menu = document.getElementById("fabMenu");
     menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+}
+
+// Close menu if clicked outside
+window.onclick = function(event) {
+    if (!event.target.matches('#bookFloat')) {
+        document.getElementById("fabMenu").style.display = 'none';
+    }
+}
+
+// FAQ Accordion Logic
+function toggleFaq(element) {
+    let answer = element.nextElementSibling;
+    let symbol = element.querySelector('span');
+    
+    if (answer.style.maxHeight) {
+        answer.style.maxHeight = null;
+        symbol.innerText = '+';
+    } else {
+        // Close all others first
+        document.querySelectorAll('.faq-answer').forEach(el => el.style.maxHeight = null);
+        document.querySelectorAll('.faq-question span').forEach(el => el.innerText = '+');
+        
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        symbol.innerText = '−';
+    }
 }
 </script>
 
