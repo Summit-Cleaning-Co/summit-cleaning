@@ -108,6 +108,19 @@ nav a:hover { color: var(--primary); }
 }
 .marquee-content span { margin: 0 30px; }
 
+/* --- STATS SECTION --- */
+.stats-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 20px;
+    margin-bottom: 40px;
+    border: 1px solid var(--border);
+}
+.stat-item h4 { margin: 0; font-size: 28px; color: var(--primary); }
+.stat-item p { margin: 0; font-size: 12px; text-transform: uppercase; color: var(--text-muted); }
+
 /* --- LAYOUT & CARDS --- */
 .container {
     max-width: 1000px;
@@ -154,15 +167,11 @@ nav a:hover { color: var(--primary); }
 }
 
 .tiktok-btn {
-    background: #fe2c55; /* TikTok Brand Color */
+    background: #fe2c55;
     color: white;
     width: 100%;
     box-sizing: border-box;
     margin-top: 15px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-}
-.tiktok-btn:hover {
-    background: #ff476d;
 }
 
 /* --- PRICING GRID --- */
@@ -179,7 +188,11 @@ nav a:hover { color: var(--primary); }
     border: 1px solid rgba(255,255,255,0.05);
     transition: 0.3s;
 }
-.box:hover { border-color: var(--primary); transform: translateY(-5px); }
+.box:hover { 
+    border-color: var(--primary); 
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
 .price-tag { font-size: 40px; font-weight: 800; color: var(--accent); }
 
 /* --- FAQ ACCORDION --- */
@@ -231,7 +244,6 @@ nav a:hover { color: var(--primary); }
     background: #1f2a44;
     margin-bottom: 8px;
 }
-.fab-menu a:hover { background: var(--primary); color: #0b1220; }
 
 #bookFloat {
     background: var(--accent);
@@ -245,7 +257,6 @@ nav a:hover { color: var(--primary); }
     animation: pulse 2s infinite;
 }
 
-/* INPUTS & IFRAMES */
 input[type="number"] {
     background: rgba(0,0,0,0.3);
     border: 1px solid var(--primary);
@@ -253,7 +264,6 @@ input[type="number"] {
     padding: 10px;
     border-radius: 8px;
     width: 60px;
-    font-size: 16px;
     text-align: center;
 }
 iframe { width: 100%; border-radius: 12px; border: none; }
@@ -295,6 +305,12 @@ iframe { width: 100%; border-radius: 12px; border: none; }
 </div>
 
 <div class="container">
+
+    <div class="stats-bar fade-in">
+        <div class="stat-item"><h4>100+</h4><p>Cars Detailed</p></div>
+        <div class="stat-item"><h4>50+</h4><p>Cans Sanitized</p></div>
+        <div class="stat-item"><h4>5.0</h4><p>Star Quality</p></div>
+    </div>
 
     <div class="notice-box fade-in">
         <h3 style="margin-top:0; color: #fbbf24;">⚠️ Service Requirement</h3>
@@ -344,11 +360,13 @@ iframe { width: 100%; border-radius: 12px; border: none; }
         <h2>Frequent Questions 🤔</h2>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">Do I need to be home? <span>+</span></div>
-            <div class="faq-answer"><p>Nope! As long as we have access to your outdoor water faucet and the vehicles/cans are accessible, we can handle the rest.</p></div>
+            <div class="faq-answer">
+                <p>If you are paying via <strong>CashApp</strong>, you don't need to be home! If you are paying with <strong>Cash</strong>, you'll need to be there to hand it over, or you can leave it in a safe spot (like under the doormat) and let us know!</p>
+            </div>
         </div>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">What payments do you take? <span>+</span></div>
-            <div class="faq-answer"><p>We try to keep it easy. We accept Cash, CashApp ($ThunderFr), and Venmo.</p></div>
+            <div class="faq-answer"><p>We accept <strong>Cash</strong> and <strong>CashApp ($ThunderFr)</strong>. We do not take Venmo at this time.</p></div>
         </div>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">Do you clean the inside of cars? <span>+</span></div>
@@ -360,7 +378,7 @@ iframe { width: 100%; border-radius: 12px; border: none; }
         <h2>Service Area 📍</h2>
         <p style="color: var(--text-muted);">Proudly serving Lehi, Utah and surrounding neighborhoods.</p>
         <iframe 
-            src="https://maps.google.com/maps?q=Lehi,+Utah&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48600.32076295713!2d-111.89069145!3d40.3916172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874d816ad8d81269%3A0xbd7f2b81600d61c9!2sLehi%2C%20UT!5e0!3m2!1sen!2sus!4v1715000000000!5m2!1sen!2sus" 
             height="350" 
             allowfullscreen="" 
             loading="lazy"
